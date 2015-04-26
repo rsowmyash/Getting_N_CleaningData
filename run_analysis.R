@@ -2,14 +2,14 @@
 ############# STEP1: MERGE TRAINING AND TEST DATASETS TO CREATE ONE DATASET ###########################
 ## Read all the training and test text files that needs to appended for preparing the dataset##
 
-test_X <- read.table("C:/Users/skumar/Documents/R_working_site/UCI HAR Dataset/test/X_test.txt", header= FALSE)
-train_X <- read.table("C:/Users/skumar/Documents/R_working_site/UCI HAR Dataset/train/X_train.txt", header= FALSE)
+test_X <- read.table(".Coursera_R/UCI HAR Dataset/test/X_test.txt", header= FALSE)
+train_X <- read.table(".Coursera_R/UCI HAR Dataset/train/X_train.txt", header= FALSE)
 
-test_activity <- read.table("C:/Users/skumar/Documents/R_working_site/UCI HAR Dataset/test/Y_test.txt", header= FALSE)
-train_activity <- read.table("C:/Users/skumar/Documents/R_working_site/UCI HAR Dataset/train/Y_train.txt", header= FALSE)
+test_activity <- read.table(".Coursera_R/UCI HAR Dataset/test/Y_test.txt", header= FALSE)
+train_activity <- read.table(".Coursera_R/UCI HAR Dataset/train/Y_train.txt", header= FALSE)
 
-test_subject <- read.table("C:/Users/skumar/Documents/R_working_site/UCI HAR Dataset/test/subject_test.txt", header= FALSE)
-train_subject <- read.table("C:/Users/skumar/Documents/R_working_site/UCI HAR Dataset/train/subject_train.txt", header= FALSE)
+test_subject <- read.table(".Coursera_R/UCI HAR Dataset/test/subject_test.txt", header= FALSE)
+train_subject <- read.table(".Coursera_R/UCI HAR Dataset/train/subject_train.txt", header= FALSE)
 
 #combine test and train datasets- measurements records#
 x <- rbind(test_X, train_X)
@@ -28,7 +28,7 @@ names(activity)<- c("activity")
 ## naming the data frames##
 
 ## load features.txt into dataframe##
-features = read.table("C:/Users/skumar/Documents/R_working_site/getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/features.txt", header= FALSE)
+features = read.table(".Coursera_R/getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/features.txt", header= FALSE)
 names(x)<- features$V2
 
 # update values with correct activity names
@@ -53,7 +53,7 @@ full_DF <- subset(full_DF,select=selectedNames)
 averages_DF <- ddply(full_DF, .(subject, activity), function(x) colMeans(x[, 1:66]))
 
 
-write.table(averages_DF, "c:/Users/skumar/Documents/R_working_site/final_dataset.txt", sep=",", row.names= FALSE)
+write.table(averages_DF, ".Coursera_R/final_dataset.txt", sep=",", row.names= FALSE)
 
 
 
